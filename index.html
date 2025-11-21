@@ -909,6 +909,8 @@
 			<form id="joinForm" action="https://formsubmit.co/mrhemrajkafle@gmail.com" method="POST">
 			  <input type="hidden" name="_captcha" value="false">
 			  <input type="hidden" name="_next" value="https://chiya.club/thankyou.html">
+			  <input type="hidden" name="_autoresponse" value="Thank you for joining Chiya Club! We will contact you soon.">
+
 			  <div class="form-grid form-grid-2">
 				<div>
 				  <label for="fullName">Full name *</label>
@@ -938,13 +940,13 @@
 			  <div style="margin-top:10px;">
 				<label>What are you most interested in?</label>
 				<div class="chips">
-				  <label class="chip"><input type="checkbox" name="interest" value="Hiking" /> Hiking</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Badminton" /> Badminton</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Tennis" /> Tennis</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Coffee / Chiya Meets" /> Coffee / Chiya meets</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Volunteering" /> Volunteering</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Networking" /> Networking</label>
-				  <label class="chip"><input type="checkbox" name="interest" value="Career Growth" /> Career growth</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Hiking" /> Hiking</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Badminton" /> Badminton</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Tennis" /> Tennis</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Coffee / Chiya Meets" /> Coffee / Chiya meets</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Volunteering" /> Volunteering</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Networking" /> Networking</label>
+				  <label class="chip"><input type="checkbox" name="interest[]" value="Career Growth" /> Career growth</label>
 				</div>
 			  </div>
 
@@ -1051,25 +1053,6 @@
       navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
     });
 
-    // Simple join-form handler (no backend – just UX)
-    const joinForm = document.getElementById("joinForm");
-    const successMessage = document.getElementById("successMessage");
-
-    joinForm?.addEventListener("submit", (e) => {
-      e.preventDefault();
-      if (!joinForm.checkValidity()) {
-        joinForm.reportValidity();
-        return;
-      }
-      // Store basic details to localStorage as a placeholder
-      const formData = new FormData(joinForm);
-      const payload = Object.fromEntries(formData.entries());
-      localStorage.setItem("chiya-club-join-preview", JSON.stringify(payload));
-      if (successMessage) {
-        successMessage.style.display = "block";
-      }
-      joinForm.reset();
-    });
 
     // Set current year in footer
     document.getElementById("yearNow").textContent = new Date().getFullYear();
