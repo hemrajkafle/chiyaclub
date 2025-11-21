@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chiya Club of Canada (Chiya Chautari)</title>
+
+  <meta name="description" content="Chiya Club of Canada (Chiya Chautari) – A Nepalese Canadian youth community for health, fitness, recreation, networking, and professionalism." />
+
+  <style>
+    :root {
+      --primary-red: #d62828;
+      --primary-blue: #003049;
+      --accent-gold: #fcbf49;
+      --bg-light: #f8f9fa;
+      --bg-cream: #fff6ea;
+      --text-dark: #222222;
+      --card-radius: 18px;
+      --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header & Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(0, 48, 73, 0.95);
+      backdrop-filter: blur(10px);
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    }
+
+    .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+
+    .brand-subtitle {
+      font-size: 0.75rem;
+      opacity: 0.8;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 22px;
+      padding: 0;
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: #fdfdfd;
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      height: 2px;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      background: var(--accent-gold);
+      transition: width 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: var(--accent-gold);
+      color: #111;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .nav-cta:hover {
+      filter: brightness(1.05);
+      transform: translateY(-1px);
+    }
+
+    .nav-toggle {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      width: 20px;
+      height: 2px;
+      background: white;
+      border-radius: 999px;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        display: none;
+        position: absolute;
+        top: 56px;
+        right: 12px;
+        background: #01263d;
+        padding: 14px 20px;
+        border-radius: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+        box-shadow: var(--shadow-soft);
+      }
+
+      nav ul.open {
+        display: flex;
+      }
+
+      .nav-toggle {
+        display: flex;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(120deg, rgba(0, 0, 0, 0.75), rgba(214, 40, 40, 0.75)),
+        url("https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      z-index: -1;
+      transform: scale(1.02);
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      padding: 80px 20px 120px;
+    }
+
+    .hero-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.8rem;
+      opacity: 0.9;
+      margin-bottom: 10px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw, 3.1rem);
+      margin: 0 0 14px;
+      font-weight: 800;
+    }
+
+    .hero-title span {
+      color: var(--accent-gold);
+    }
+
+    .hero-tagline {
+      font-size: 1rem;
+      opacity: 0.92;
+      max-width: 550px;
+      margin: 0 auto 22px;
+    }
+
+    .hero-pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+      font-size: 0.8rem;
+      opacity: 0.92;
+    }
+
+    .hero-pill {
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      padding: 6px 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border-radius: 999px;
+      padding: 10px 18px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-primary {
+      background: var(--accent-gold);
+      color: #111;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .btn-secondary {
+      background: rgba(0, 0, 0, 0.35);
+      color: #fdfdfd;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      opacity: 0.85;
+    }
+
+    /* Layout Helpers */
+    .section {
+      padding: 64px 18px;
+    }
+
+    .section-alt {
+      background: var(--bg-cream);
+    }
+
+    .section-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      max-width: 720px;
+      margin-bottom: 32px;
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: var(--primary-red);
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      margin: 0 0 8px;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: #555;
+      margin: 0;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      gap: 20px;
+    }
+
+    @media (min-width: 768px) {
+      .grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    /* Cards */
+    .card {
+      background: white;
+      border-radius: var(--card-radius);
+      padding: 20px 20px 18px;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--primary-blue);
+      background: #edf5ff;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 1rem;
+      margin: 0 0 4px;
+    }
+
+    .card-meta {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Stats */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .stat-pill {
+      flex: 1 1 130px;
+      min-width: 130px;
+      background: white;
+      border-radius: 999px;
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-soft);
+      font-size: 0.9rem;
+    }
+
+    .stat-label {
+      color: #555;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      color: var(--primary-blue);
+    }
+
+    /* Timeline */
+    .timeline {
+      border-left: 2px solid rgba(0, 0, 0, 0.1);
+      margin-left: 8px;
+      padding-left: 16px;
+    }
+
+    .timeline-item {
+      margin-bottom: 18px;
+      position: relative;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--primary-red);
+      position: absolute;
+      left: -22px;
+      top: 4px;
+    }
+
+    .timeline-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: #999;
+      margin-bottom: 4px;
+    }
+
+    .timeline-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .timeline-text {
+      font-size: 0.85rem;
+      color: #555;
+    }
+
+    /* Join / Form */
+    .form-card {
+      background: white;
+      border-radius: var(--card-radius);
+      padding: 22px 20px 20px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 12px 16px;
+    }
+
+    @media (min-width: 640px) {
+      .form-grid-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    label {
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      font: inherit;
+      padding: 8px 9px;
+      border-radius: 10px;
+      border: 1px solid #d0d0d0;
+      background: #fff;
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .chip input {
+      width: auto;
+      margin-right: 4px;
+      transform: translateY(1px);
+    }
+
+    .form-footnote {
+      font-size: 0.75rem;
+      color: #777;
+      margin-top: 6px;
+    }
+
+    .success-message {
+      display: none;
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #0b6b34;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary-blue);
+      color: #f3f3f3;
+      padding: 26px 18px 20px;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-col {
+      max-width: 360px;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+    }
+
+    .footer-links a {
+      opacity: 0.9;
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 12px auto 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Nav -->
+  <header>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="brand-title">Chiya Club of Canada</div>
+        <div class="brand-subtitle">Chiya Chautari – Nepalese Canadian Youth</div>
+      </div>
+
+      <nav>
+        <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <ul id="navMenu">
+          <li><a href="#about">About</a></li>
+          <li><a href="#focus">Focus</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <button class="nav-cta" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'});">
+        Join the Club
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-inner">
+      <div class="hero-kicker">Nepalese Canadian Youth Community</div>
+      <h1 class="hero-title">
+        Sip. Move. Connect. <span>Grow.</span>
+      </h1>
+      <p class="hero-tagline">
+        Chiya Club of Canada (Chiya Chautari) is a non-profit youth community
+        that blends <strong>health, fitness, recreation</strong>, and
+        <strong>professional networking</strong> for Nepalese Canadians.
+      </p>
+
+      <div class="hero-pill-row">
+        <div class="hero-pill">☕ Weekly & monthly chiya meets</div>
+        <div class="hero-pill">🏃 Hiking, badminton & tennis</div>
+        <div class="hero-pill">🩸 Upcoming plasma donation drives</div>
+        <div class="hero-pill">🎉 New Year get-togethers</div>
+      </div>
+
+      <div class="hero-actions">
+        <button class="btn-primary" onclick="document.getElementById('join').scrollIntoView({behavior:'smooth'});">
+          Become a Member
+        </button>
+        <button class="btn-secondary" onclick="document.getElementById('events').scrollIntoView({behavior:'smooth'});">
+          View Events
+        </button>
+      </div>
+
+      <div class="hero-note">
+        Currently <strong>50+ active members</strong> – growing across Canada.
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Stats -->
+  <section id="about" class="section">
+    <div class="section-inner grid grid-2">
+      <div>
+        <div class="section-header">
+          <div class="section-kicker">Who we are</div>
+          <h2 class="section-title">Chiya Chautari for Nepalese Canadian Youth</h2>
+          <p class="section-subtitle">
+            Chiya Club of Canada (Chiya Chautari) is a youth-driven initiative
+            that creates safe, fun, and inspiring spaces for Nepalese Canadians
+            to connect – from morning fitness groups to evening chai
+            conversations.
+          </p>
+        </div>
+
+        <p>
+          We believe in balancing <strong>well-being, community and career</strong>.
+          Our activities promote physical and mental health, social
+          connections, mentorship, and professional growth, all while keeping
+          our Nepali roots alive.
+        </p>
+        <p>
+          The club is in the process of being incorporated as a
+          <strong>non-profit organization in Canada</strong> under the legal
+          name <strong>"Chiya Club of Canada (Chiya Chautari)"</strong>.
+        </p>
+      </div>
+
+      <div>
+        <div class="stats-row" aria-label="Chiya Club quick stats">
+          <div class="stat-pill">
+            <span class="stat-label">Active members</span>
+            <span class="stat-value">50+</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">Core pillars</span>
+            <span class="stat-value">5</span>
+          </div>
+          <div class="stat-pill">
+            <span class="stat-label">Past events</span>
+            <span class="stat-value">10+</span>
+          </div>
+        </div>
+        <div style="margin-top: 18px; font-size: 0.85rem; color:#555;">
+          Pillars: health & fitness, recreation, get-togethers, networking,
+          and professionalism.
+        </div>
+
+        <div style="margin-top: 20px;" class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2024 – 2025</div>
+            <div class="timeline-title">Grassroots community meets</div>
+            <div class="timeline-text">
+              Informal hiking groups, badminton & tennis games, and coffee
+              meetups spark the idea of a dedicated youth club.
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-label">2025 & Beyond</div>
+            <div class="timeline-title">Non-profit incorporation</div>
+            <div class="timeline-text">
+              Chiya Club of Canada is formalized as a non-profit, with plans
+              for structured programs, youth leadership, and community impact.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Focus Areas -->
+  <section id="focus" class="section section-alt">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">What we do</div>
+        <h2 class="section-title">Health, Recreation & Professional Growth</h2>
+        <p class="section-subtitle">
+          From staying active to building careers, Chiya Club is designed
+          around the real needs of Nepalese Canadian youths.
+        </p>
+      </div>
+
+      <div class="grid grid-3">
+        <article class="card">
+          <div class="card-tag">Health & Fitness</div>
+          <h3 class="card-title">Move together, stay accountable</h3>
+          <p>
+            Group hiking, morning walks, badminton and tennis sessions that
+            encourage consistency, friendly competition, and a healthier
+            lifestyle.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Recreation</div>
+          <h3 class="card-title">Fun, culture & community</h3>
+          <p>
+            Weekend hangouts, chai meetups, games, and cultural moments that
+            bring Nepalese youth together across cities in Canada.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Networking</div>
+          <h3 class="card-title">Connect with your people</h3>
+          <p>
+            Build a strong peer network of students, early-career
+            professionals, entrepreneurs, and community leaders.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Professionalism</div>
+          <h3 class="card-title">Grow your career</h3>
+          <p>
+            Mentorship circles, skill-sharing sessions, and role-model
+            interactions focused on professional growth in the Canadian
+            context.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Well-being</div>
+          <h3 class="card-title">Mind, body & balance</h3>
+          <p>
+            A supportive community that encourages mental well-being,
+            work–life balance, and open conversations over a warm cup of chiya.
+          </p>
+        </article>
+
+        <article class="card">
+          <div class="card-tag">Volunteerism</div>
+          <h3 class="card-title">Give back together</h3>
+          <p>
+            Community service, donation drives and volunteering opportunities
+            like plasma donation and charity partnerships.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events -->
+  <section id="events" class="section">
+    <div class="section-inner">
+      <div class="section-header">
+        <div class="section-kicker">Events</div>
+        <h2 class="section-title">Past Highlights & Upcoming Programs</h2>
+        <p class="section-subtitle">
+          A snapshot of the activities that keep Chiya Club vibrant.
+        </p>
+      </div>
+
+      <div class="grid grid-2" style="align-items:flex-start; gap:26px;">
+        <!-- Past Events -->
+        <div>
+          <h3 style="margin-top:0; margin-bottom:10px; font-size:1.1rem;">Past activities</h3>
+          <div class="grid" style="gap:14px;">
+            <article class="card">
+              <div class="card-tag">Hiking</div>
+              <h3 class="card-title">Weekend trail hikes</h3>
+              <div class="card-meta">Nature, steps and stories.</div>
+              <p>
+                Scenic trail hikes with mixed groups of students and young
+                professionals, combining fitness with stunning Canadian
+                landscapes.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">Badminton</div>
+              <h3 class="card-title">Friendly doubles & ladders</h3>
+              <div class="card-meta">Indoor courts across the GTA.</div>
+              <p>
+                Regular badminton meets for all skill levels – perfect for
+                cardio, laughs, and friendly rivalries.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">Tennis</div>
+              <h3 class="card-title">Summer tennis sessions</h3>
+              <div class="card-meta">Public courts, warm evenings.</div>
+              <p>
+                Casual matches and learning sessions to help members try
+                something new or improve their game.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">Coffee / Chiya Meets</div>
+              <h3 class="card-title">Chiya Chautari hangouts</h3>
+              <div class="card-meta">Local cafés & homes.</div>
+              <p>
+                Relaxed chai and coffee meetups where conversations range from
+                immigration journeys to career plans and everything in between.
+              </p>
+            </article>
+          </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div>
+          <h3 style="margin-top:0; margin-bottom:10px; font-size:1.1rem;">Upcoming & planned programs</h3>
+          <div class="grid" style="gap:14px;">
+            <article class="card">
+              <div class="card-tag">Plasma Donation</div>
+              <h3 class="card-title">Youth-led plasma donation drive</h3>
+              <div class="card-meta">Planned & upcoming</div>
+              <p>
+                Coordinated group visits to donation centres to support
+                Canadian healthcare while building a culture of giving back.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">New Year Get-Together</div>
+              <h3 class="card-title">New Year social & networking night</h3>
+              <div class="card-meta">Date to be announced</div>
+              <p>
+                A festive evening blending Nepali vibes with Canadian life –
+                music, games, food, and networking.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">Wellness</div>
+              <h3 class="card-title">Wellness & mindfulness circles</h3>
+              <div class="card-meta">In design</div>
+              <p>
+                Small-group check-ins, walks and discussions focused on
+                stress, studies, work, and mental well-being.
+              </p>
+            </article>
+
+            <article class="card">
+              <div class="card-tag">Leadership</div>
+              <h3 class="card-title">Youth leadership & volunteering</h3>
+              <div class="card-meta">Open to members</div>
+              <p>
+                Opportunities to help run events, host sessions, or lead
+                initiatives under the Chiya Club non-profit umbrella.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Join / Membership -->
+  <section id="join" class="section section-alt">
+    <div class="section-inner grid grid-2" style="align-items:flex-start; gap:26px;">
+      <div>
+        <div class="section-header">
+          <div class="section-kicker">Membership</div>
+          <h2 class="section-title">Join Chiya Club</h2>
+          <p class="section-subtitle">
+            Membership is open to Nepalese Canadian youths and friends who
+            resonate with our values. There is no formal fee at this stage –
+            just your time, energy and willingness to grow together.
+          </p>
+        </div>
+
+        <ul style="padding-left:18px; font-size:0.9rem;">
+          <li>Stay informed about upcoming hikes, sports and meetups.</li>
+          <li>Join group chats and circles in your city.</li>
+          <li>Access mentorship and professional networking opportunities.</li>
+          <li>Volunteer and help shape the future of the club.</li>
+        </ul>
+        <p style="font-size:0.85rem; color:#555; margin-top:10px;">
+          After you submit the form, a volunteer will contact you with next
+          steps and add you to the appropriate communication channels.
+        </p>
+      </div>
+
+      <div>
+        <div class="form-card">
+          <form id="joinForm">
+            <div class="form-grid form-grid-2">
+              <div>
+                <label for="fullName">Full name *</label>
+                <input id="fullName" name="fullName" required />
+              </div>
+              <div>
+                <label for="email">Email *</label>
+                <input id="email" type="email" name="email" required />
+              </div>
+              <div>
+                <label for="city">City & Province</label>
+                <input id="city" name="city" placeholder="e.g., Brampton, ON" />
+              </div>
+              <div>
+                <label for="ageGroup">Age group</label>
+                <select id="ageGroup" name="ageGroup">
+                  <option value="">Select</option>
+                  <option>Under 18</option>
+                  <option>18 – 25</option>
+                  <option>26 – 30</option>
+                  <option>31 – 40</option>
+                  <option>41+</option>
+                </select>
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label>What are you most interested in?</label>
+              <div class="chips">
+                <label class="chip"><input type="checkbox" name="interest" value="Hiking" /> Hiking</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Badminton" /> Badminton</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Tennis" /> Tennis</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Coffee / Chiya Meets" /> Coffee / Chiya meets</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Volunteering" /> Volunteering</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Networking" /> Networking</label>
+                <label class="chip"><input type="checkbox" name="interest" value="Career Growth" /> Career growth</label>
+              </div>
+            </div>
+
+            <div style="margin-top:10px;">
+              <label for="message">Anything you’d like us to know?</label>
+              <textarea id="message" name="message" placeholder="Share a bit about yourself or how you’d like to be involved."></textarea>
+            </div>
+
+            <div style="margin-top:10px; font-size:0.8rem;">
+              <label>
+                <input type="checkbox" name="whatsapp" />
+                I’m okay being added to a WhatsApp / group chat for updates.
+              </label>
+            </div>
+
+            <button type="submit" class="btn-primary" style="margin-top:12px;">
+              Submit Interest
+            </button>
+            <div class="form-footnote">
+              This form does not collect payment. A volunteer will follow up by
+              email.
+            </div>
+
+            <div id="successMessage" class="success-message">
+              Thank you! Your interest form is captured locally in your
+              browser. Please email us if you don’t hear back within a few
+              days.
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <section id="contact" class="section">
+    <div class="section-inner grid grid-2" style="gap:26px; align-items:flex-start;">
+      <div>
+        <div class="section-header">
+          <div class="section-kicker">Contact</div>
+          <h2 class="section-title">Get in touch</h2>
+          <p class="section-subtitle">
+            Whether you want to join, volunteer, collaborate or sponsor an
+            activity, we’d love to hear from you.
+          </p>
+        </div>
+
+        <p style="font-size:0.95rem;">
+          <strong>Email:</strong> <a href="mailto:info@chiya.club">info@chiya.club</a><br />
+          <strong>Instagram:</strong> <a href="https://instagram.com/chiya.club" target="_blank" rel="noopener">@chiya.club</a><br />
+        </p>
+        <p style="font-size:0.85rem; color:#555;">
+          For formal non-profit, partnership or sponsorship queries, please
+          mention "Chiya Club of Canada (Chiya Chautari)" in the subject line.
+        </p>
+      </div>
+
+      <div>
+        <div class="card">
+          <div class="card-tag">Coming soon</div>
+          <h3 class="card-title">Official non-profit details</h3>
+          <p style="font-size:0.9rem;">
+            As we complete our incorporation as a Canadian non-profit, this
+            section will include:
+          </p>
+          <ul style="padding-left:18px; font-size:0.85rem; margin-top:8px;">
+            <li>Registered non-profit name & number</li>
+            <li>Board / youth leadership structure</li>
+            <li>Basic by-laws and membership guidelines</li>
+            <li>How to donate or sponsor programs</li>
+          </ul>
+          <p style="font-size:0.8rem; color:#555; margin-top:8px;">
+            Check back for updates or follow us on Instagram for the latest
+            announcements.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <strong>Chiya Club of Canada (Chiya Chautari)</strong>
+        <div style="margin-top:4px;">
+          A youth-led community platform for health, recreation, networking
+          and professionalism among Nepalese Canadians.
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-links">
+          <a href="#top">Back to top</a>
+          <a href="#focus">Focus areas</a>
+          <a href="#events">Events</a>
+          <a href="#join">Membership</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© <span id="yearNow"></span> Chiya Club of Canada. All rights reserved.</div>
+      <div>Non-profit incorporation in progress.</div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById("navToggle");
+    const navMenu = document.getElementById("navMenu");
+    navToggle?.addEventListener("click", () => {
+      const isOpen = navMenu.classList.toggle("open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    // Simple join-form handler (no backend – just UX)
+    const joinForm = document.getElementById("joinForm");
+    const successMessage = document.getElementById("successMessage");
+
+    joinForm?.addEventListener("submit", (e) => {
+      e.preventDefault();
+      if (!joinForm.checkValidity()) {
+        joinForm.reportValidity();
+        return;
+      }
+      // Store basic details to localStorage as a placeholder
+      const formData = new FormData(joinForm);
+      const payload = Object.fromEntries(formData.entries());
+      localStorage.setItem("chiya-club-join-preview", JSON.stringify(payload));
+      if (successMessage) {
+        successMessage.style.display = "block";
+      }
+      joinForm.reset();
+    });
+
+    // Set current year in footer
+    document.getElementById("yearNow").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
